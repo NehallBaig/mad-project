@@ -1,6 +1,7 @@
 import React from 'react';
 import { Clipboard, Alert, Platform, View } from 'react-native';
 import Header from '../../layout/Header';
+import * as Analytics from 'expo-firebase-analytics';
 import {
   ImageNotData,
   ImageNotDataWrapper,
@@ -25,6 +26,8 @@ class Home extends React.Component {
     count: 0,
     downloading: false,
     isLogin: false,
+    uid:this.props.uid,
+    email:this.props.email
 
   };
 
@@ -63,7 +66,7 @@ class Home extends React.Component {
   };
 
   downloadFile = () => {
-    const { sourceType, sourceUrl } = this.state;
+    const { sourceType, sourceUrl ,uid,email} = this.state;
     this.setState({ downloading: true });
     FileSystem.downloadAsync(
       sourceUrl,
@@ -77,6 +80,12 @@ class Home extends React.Component {
         });
         this.setState({ downloading: false });
         this.setState({ sourceUrl: null, sourceType: null });
+      Analytics.logEvent('TrackDownload', {
+                            userId: uid,
+                            screen: 'Home',
+                            purpose: 'track user who download the video from our app',
+                            userEmail: email
+                        });
       })
       .catch(error => {
         Alert.alert('Error', 'Try again');
