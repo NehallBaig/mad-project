@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView } from "react-native";
 import InputTextField from "../../components/InputTextField";
 import Firebase from 'firebase';
+import * as Analytics from 'expo-firebase-analytics';
 
 let config = {
     apiKey: "AIzaSyA1ES8utF6KMM1O329sZJcWJzjD2vIVxSA",
@@ -33,6 +34,12 @@ export default class Login extends React.Component {
       .then(res => {
         let uid = res.user.uid;
         console.log(res)
+         Analytics.logEvent('Login', {
+                            userId: uid,
+                            screen: 'Login',
+                            purpose: 'login to app',
+                            userEmail: email
+                        });
         this.props.navigation.navigate("Home")
       })
       .catch((error) => {
