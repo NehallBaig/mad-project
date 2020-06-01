@@ -4,14 +4,14 @@ import InputTextField from "../../components/InputTextField";
 import Firebase from 'firebase';
 
 let config = {
-  apiKey: "AIzaSyDQhaDFql-UmyFk-ZKOfG-5rHsgaEG6pwg",
-  authDomain: "nehal-app.firebaseapp.com",
-  databaseURL: "https://nehal-app.firebaseio.com",
-  projectId: "nehal-app",
-  storageBucket: "nehal-app.appspot.com",
-  messagingSenderId: "618345353653",
-  appId: "1:618345353653:web:44669e2bbea4ed42e009fc",
-  measurementId: "G-5PXB5JH7TL"
+    apiKey: "AIzaSyA1ES8utF6KMM1O329sZJcWJzjD2vIVxSA",
+    authDomain: "insta-app-3a592.firebaseapp.com",
+    databaseURL: "https://insta-app-3a592.firebaseio.com",
+    projectId: "insta-app-3a592",
+    storageBucket: "insta-app-3a592.appspot.com",
+    messagingSenderId: "1083404572752",
+    appId: "1:1083404572752:web:a7c88db77455b12b815955",
+    measurementId: "G-49WW6D5CBE"
 };
 if (!Firebase.apps.length) {
   Firebase.initializeApp(config);
